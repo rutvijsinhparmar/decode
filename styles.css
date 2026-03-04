@@ -149,3 +149,10 @@ body::after {
     color: #ffffff;
     text-shadow: 0 0 8px #89E6ED;
 }
+@media (max-width: 430px) {
+    #menu {
+        transform: scale(0.75);
+        transform-origin: top left;
+        width: 133%;
+    }
+}
