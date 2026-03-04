@@ -120,15 +120,17 @@ html {
 @media (max-width: 430px) {
 
     body {
-        font-size: 8px;   /* smaller for ASCII accuracy */
-        padding: 10px 5px;
+        font-size: 9px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
 
     #menu {
         white-space: pre;
-        overflow-x: auto;
-        display: flex;
-        justify-content: center;
+        text-align: center;
     }
 
     .cursor {
