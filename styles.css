@@ -145,3 +145,7 @@ body::after {
     display: block;
     height: 20px;
 }
+.special-message {
+    color: #ffffff;
+    text-shadow: 0 0 8px #89E6ED;
+}
