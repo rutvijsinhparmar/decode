@@ -26,7 +26,7 @@ class EncryptedMessage {
         this.messageText = '';
         this.artText = '';
         this.encryptedDisplayText = '';
-        this.promptText = '\n\nHit Enter To Decrypt...';
+        this.promptText = '\n\nTap anywhere to decrypt...';
         this.isDecrypting = false;
         this.intervals = [];
         
@@ -234,18 +234,26 @@ class EncryptedMessage {
     }
 
     setupDecryptionListener() {
-        const handleKeyDown = (event) => {
-            if (event.key === "Enter" && !this.isDecrypting) {
-                this.isDecrypting = true;
-                this.menuElement.textContent = this.encryptedDisplayText;
-                this.randomizeText();
-                document.removeEventListener('keydown', handleKeyDown);
-            }
-        };
+    const handleDecrypt = () => {
+        if (!this.isDecrypting) {
+            this.isDecrypting = true;
+            this.menuElement.textContent = this.encryptedDisplayText;
+            this.randomizeText();
 
-        document.addEventListener('keydown', handleKeyDown);
-    }
+            document.removeEventListener('click', handleDecrypt);
+            document.removeEventListener('keydown', handleKeyDown);
+        }
+    };
 
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            handleDecrypt();
+        }
+    };
+
+    document.addEventListener('click', handleDecrypt);
+    document.addEventListener('keydown', handleKeyDown);
+}
     randomizeText() {
         let randomizeCount = 0;
         const maxRandomizations = 100;
